@@ -1,0 +1,17 @@
+Ron--
+To ensure that the cleint side  routing works when deployed, make sure to set base: '/' in vite.config.ts
+e.g
+export default defineConfig({
+  base: '/',//over here 
+  plugins: [
+    TanStackRouterVite({ autoCodeSplitting: false }),
+    viteReact(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
+})
+-------------------------------------------------
