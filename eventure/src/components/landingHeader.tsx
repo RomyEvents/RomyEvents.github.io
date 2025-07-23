@@ -1,10 +1,14 @@
 import { Link, useNavigate } from '@tanstack/react-router'
 import Button from '@mui/material/Button'
+import { showLoginDialog, LoginDialog } from './loginDialog'
 export default function LandingHeader() {
   const navigate = useNavigate()
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    const confirmed = await showLoginDialog()
+    if (confirmed) {
+      navigate({ to: '/app' })
+    }
     // optional: analytics or checks
-    navigate({ to: '/app' })
   }
 
   return (
@@ -29,6 +33,7 @@ export default function LandingHeader() {
             <Link to="/demo/tanstack-query">Contact</Link>
           </div>
           <Button onClick={handleLogin}>Login</Button>
+          <LoginDialog />
         </div>
       </nav>
     </header>
