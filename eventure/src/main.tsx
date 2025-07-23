@@ -1,10 +1,6 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-  RouterProvider,
-  createRouter,
-  createHashHistory,
-} from '@tanstack/react-router'
+import { RouterProvider, createRouter } from '@tanstack/react-router'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
 
@@ -16,7 +12,6 @@ import reportWebVitals from './reportWebVitals.ts'
 
 // Create a new router instance
 const router = createRouter({
-  history: createHashHistory(),
   routeTree,
   context: {
     ...TanStackQueryProvider.getContext(),
