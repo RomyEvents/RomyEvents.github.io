@@ -4,10 +4,7 @@ import { showLoginDialog, LoginDialog } from './login/loginDialog'
 export default function LandingHeader() {
   const navigate = useNavigate()
   const handleLogin = async () => {
-    const confirmed = await showLoginDialog()
-    if (confirmed) {
-      navigate({ to: '/app' })
-    }
+    showLoginDialog()
     // optional: analytics or checks
   }
 
