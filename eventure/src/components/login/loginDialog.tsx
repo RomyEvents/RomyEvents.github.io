@@ -1,5 +1,5 @@
 // LoginDialog.tsx
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {
   Dialog,
   DialogContent,
@@ -9,14 +9,13 @@ import {
   CircularProgress,
 } from '@mui/material'
 // import { supabase } from '@/supabaseClient'
-import { useNavigate } from '@tanstack/react-router'
 import { supabase } from '@/supabaseClient'
 let showLoginDialog: () => void
 
 export function LoginDialog() {
   const [isOpen, setIsOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   // src/supabaseClient.js
 
   showLoginDialog = () => {

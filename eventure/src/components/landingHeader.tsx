@@ -1,8 +1,8 @@
-import { Link, useNavigate } from '@tanstack/react-router'
+import { Link } from '@tanstack/react-router'
 import Button from '@mui/material/Button'
 import { showLoginDialog, LoginDialog } from './login/loginDialog'
 export default function LandingHeader() {
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   const handleLogin = async () => {
     showLoginDialog()
     // optional: analytics or checks
