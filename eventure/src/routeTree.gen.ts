@@ -12,6 +12,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LandingAboutRouteImport } from './routes/landing/about'
 import { Route as Landing_layoutRouteImport } from './routes/landing/__layout'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 import { Route as App_layoutRouteImport } from './routes/app/__layout'
@@ -36,6 +37,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LandingAboutRoute = LandingAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => LandingRoute,
 } as any)
 const Landing_layoutRoute = Landing_layoutRouteImport.update({
   id: '/__layout',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/app': typeof App_layoutRouteWithChildren
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutRouteWithChildren
+  '/landing/about': typeof LandingAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
   '/app/': typeof App_layoutIndexRoute
   '/landing/': typeof Landing_layoutIndexRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/app': typeof App_layoutIndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutIndexRoute
+  '/landing/about': typeof LandingAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
 }
 export interface FileRoutesById {
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof LandingRouteWithChildren
   '/landing/__layout': typeof Landing_layoutRouteWithChildren
+  '/landing/about': typeof LandingAboutRoute
   '/landing/__layout/index copy': typeof Landing_layoutIndexcopyRoute
   '/app/__layout/': typeof App_layoutIndexRoute
   '/landing/__layout/': typeof Landing_layoutIndexRoute
@@ -101,11 +110,18 @@ export interface FileRouteTypes {
     | '/app'
     | '/demo/tanstack-query'
     | '/landing'
+    | '/landing/about'
     | '/landing/index copy'
     | '/app/'
     | '/landing/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/demo/tanstack-query' | '/landing' | '/landing/index copy'
+  to:
+    | '/'
+    | '/app'
+    | '/demo/tanstack-query'
+    | '/landing'
+    | '/landing/about'
+    | '/landing/index copy'
   id:
     | '__root__'
     | '/'
@@ -114,6 +130,7 @@ export interface FileRouteTypes {
     | '/demo/tanstack-query'
     | '/landing'
     | '/landing/__layout'
+    | '/landing/about'
     | '/landing/__layout/index copy'
     | '/app/__layout/'
     | '/landing/__layout/'
@@ -148,6 +165,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/landing/about': {
+      id: '/landing/about'
+      path: '/about'
+      fullPath: '/landing/about'
+      preLoaderRoute: typeof LandingAboutRouteImport
+      parentRoute: typeof LandingRoute
     }
     '/landing/__layout': {
       id: '/landing/__layout'
@@ -232,10 +256,12 @@ const Landing_layoutRouteWithChildren = Landing_layoutRoute._addFileChildren(
 
 interface LandingRouteChildren {
   Landing_layoutRoute: typeof Landing_layoutRouteWithChildren
+  LandingAboutRoute: typeof LandingAboutRoute
 }
 
 const LandingRouteChildren: LandingRouteChildren = {
   Landing_layoutRoute: Landing_layoutRouteWithChildren,
+  LandingAboutRoute: LandingAboutRoute,
 }
 
 const LandingRouteWithChildren =
