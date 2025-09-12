@@ -17,7 +17,7 @@ function RouteComponent() {
       {/* Upload photo section */}
       <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center bg-gray-100">
         <img
-          src="/event-placeholder.png"
+          src="https://i.imgur.com/SdlO2kS.png"
           alt="Event"
           className="object-cover w-full h-full"
         />

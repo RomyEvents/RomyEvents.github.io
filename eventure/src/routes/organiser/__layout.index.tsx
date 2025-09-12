@@ -21,7 +21,7 @@ const eventsData: Event[] = [
   {
     dateMonth: 'Aug',
     dateDay: 26,
-    name: 'Event Name',
+    name: 'School party',
     sold: '0/22',
     gross: '$0.00',
     status: 'Online',
@@ -29,7 +29,7 @@ const eventsData: Event[] = [
   {
     dateMonth: 'Sep',
     dateDay: 12,
-    name: 'Another Event',
+    name: 'Stargazing',
     sold: '15/30',
     gross: '$450.00',
     status: 'Offline',
