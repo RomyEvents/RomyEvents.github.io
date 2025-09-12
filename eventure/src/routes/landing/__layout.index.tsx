@@ -1,6 +1,4 @@
-import { supabase } from '@/supabaseClient'
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect } from 'react'
 import sectionRegistry from '@/sectionRegistry'
 
 export const Route = createFileRoute('/landing/__layout/')({
