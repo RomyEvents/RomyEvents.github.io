@@ -10,12 +10,22 @@ export const Route = createFileRoute('/landing/__layout/')({
 function App() {
   const pageData = [
     {
-      type: 'backgroundImage',
-      reviews: [
-        { name: 'Alice', rating: 5, comment: 'Amazing!' },
-        { name: 'Bob', rating: 4, comment: 'Pretty good!' },
-      ],
-      height: 100,
+      type: 'default',
+      header: '',
+      icon: '',
+      description: '',
+      backgroundImage: 'https://i.imgur.com/uoQAA1j.jpeg',
+      backgroundColor: '#a67c52',
+      height: 300,
+    },
+    {
+      type: 'default',
+      header: 'Our user base',
+      icon: 'accessibilityNew',
+      description: '12,000 users \n 400 organizers hosting events',
+      backgroundImage: null,
+      backgroundColor: '#a67c52',
+      height: 300,
     },
     {
       type: 'review',
@@ -26,12 +36,6 @@ function App() {
         { name: 'charlie', rating: 5, comment: 'Love this!' },
       ],
     },
-  ]
-
-  const testimonials = [
-    'Had my best experience at this running event. So good!',
-    'As an organiser, Eventure is amazing, the sign up and creating process was so smooth and easy and I was able to get 150 sign ups.',
-    'I attended this whisky event and truly the sign up process for this was so simple.',
   ]
 
   return (

@@ -12,17 +12,26 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as LandingAboutRouteImport } from './routes/landing/about'
+import { Route as Organiser_layoutRouteImport } from './routes/organiser/__layout'
 import { Route as Landing_layoutRouteImport } from './routes/landing/__layout'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 import { Route as App_layoutRouteImport } from './routes/app/__layout'
+import { Route as Organiser_layoutIndexRouteImport } from './routes/organiser/__layout.index'
 import { Route as Landing_layoutIndexRouteImport } from './routes/landing/__layout.index'
 import { Route as App_layoutIndexRouteImport } from './routes/app/__layout.index'
+import { Route as Organiser_layoutCreateEventsRouteImport } from './routes/organiser/__layout.createEvents'
 import { Route as Landing_layoutIndexcopyRouteImport } from './routes/landing/__layout.index copy'
+import { Route as Landing_layoutAboutRouteImport } from './routes/landing/__layout.about'
 
+const OrganiserRouteImport = createFileRoute('/organiser')()
 const LandingRouteImport = createFileRoute('/landing')()
 const AppRouteImport = createFileRoute('/app')()
 
+const OrganiserRoute = OrganiserRouteImport.update({
+  id: '/organiser',
+  path: '/organiser',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LandingRoute = LandingRouteImport.update({
   id: '/landing',
   path: '/landing',
@@ -38,10 +47,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LandingAboutRoute = LandingAboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => LandingRoute,
+const Organiser_layoutRoute = Organiser_layoutRouteImport.update({
+  id: '/__layout',
+  getParentRoute: () => OrganiserRoute,
 } as any)
 const Landing_layoutRoute = Landing_layoutRouteImport.update({
   id: '/__layout',
@@ -56,6 +64,11 @@ const App_layoutRoute = App_layoutRouteImport.update({
   id: '/__layout',
   getParentRoute: () => AppRoute,
 } as any)
+const Organiser_layoutIndexRoute = Organiser_layoutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Organiser_layoutRoute,
+} as any)
 const Landing_layoutIndexRoute = Landing_layoutIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -66,9 +79,20 @@ const App_layoutIndexRoute = App_layoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => App_layoutRoute,
 } as any)
+const Organiser_layoutCreateEventsRoute =
+  Organiser_layoutCreateEventsRouteImport.update({
+    id: '/createEvents',
+    path: '/createEvents',
+    getParentRoute: () => Organiser_layoutRoute,
+  } as any)
 const Landing_layoutIndexcopyRoute = Landing_layoutIndexcopyRouteImport.update({
   id: '/index copy',
   path: '/index copy',
+  getParentRoute: () => Landing_layoutRoute,
+} as any)
+const Landing_layoutAboutRoute = Landing_layoutAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => Landing_layoutRoute,
 } as any)
 
@@ -77,18 +101,23 @@ export interface FileRoutesByFullPath {
   '/app': typeof App_layoutRouteWithChildren
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutRouteWithChildren
-  '/landing/about': typeof LandingAboutRoute
+  '/organiser': typeof Organiser_layoutRouteWithChildren
+  '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
   '/app/': typeof App_layoutIndexRoute
   '/landing/': typeof Landing_layoutIndexRoute
+  '/organiser/': typeof Organiser_layoutIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof App_layoutIndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutIndexRoute
-  '/landing/about': typeof LandingAboutRoute
+  '/organiser': typeof Organiser_layoutIndexRoute
+  '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,10 +127,14 @@ export interface FileRoutesById {
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof LandingRouteWithChildren
   '/landing/__layout': typeof Landing_layoutRouteWithChildren
-  '/landing/about': typeof LandingAboutRoute
+  '/organiser': typeof OrganiserRouteWithChildren
+  '/organiser/__layout': typeof Organiser_layoutRouteWithChildren
+  '/landing/__layout/about': typeof Landing_layoutAboutRoute
   '/landing/__layout/index copy': typeof Landing_layoutIndexcopyRoute
+  '/organiser/__layout/createEvents': typeof Organiser_layoutCreateEventsRoute
   '/app/__layout/': typeof App_layoutIndexRoute
   '/landing/__layout/': typeof Landing_layoutIndexRoute
+  '/organiser/__layout/': typeof Organiser_layoutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,18 +143,23 @@ export interface FileRouteTypes {
     | '/app'
     | '/demo/tanstack-query'
     | '/landing'
+    | '/organiser'
     | '/landing/about'
     | '/landing/index copy'
+    | '/organiser/createEvents'
     | '/app/'
     | '/landing/'
+    | '/organiser/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/app'
     | '/demo/tanstack-query'
     | '/landing'
+    | '/organiser'
     | '/landing/about'
     | '/landing/index copy'
+    | '/organiser/createEvents'
   id:
     | '__root__'
     | '/'
@@ -130,10 +168,14 @@ export interface FileRouteTypes {
     | '/demo/tanstack-query'
     | '/landing'
     | '/landing/__layout'
-    | '/landing/about'
+    | '/organiser'
+    | '/organiser/__layout'
+    | '/landing/__layout/about'
     | '/landing/__layout/index copy'
+    | '/organiser/__layout/createEvents'
     | '/app/__layout/'
     | '/landing/__layout/'
+    | '/organiser/__layout/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,10 +183,18 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   LandingRoute: typeof LandingRouteWithChildren
+  OrganiserRoute: typeof OrganiserRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/organiser': {
+      id: '/organiser'
+      path: '/organiser'
+      fullPath: '/organiser'
+      preLoaderRoute: typeof OrganiserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/landing': {
       id: '/landing'
       path: '/landing'
@@ -166,12 +216,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/landing/about': {
-      id: '/landing/about'
-      path: '/about'
-      fullPath: '/landing/about'
-      preLoaderRoute: typeof LandingAboutRouteImport
-      parentRoute: typeof LandingRoute
+    '/organiser/__layout': {
+      id: '/organiser/__layout'
+      path: '/organiser'
+      fullPath: '/organiser'
+      preLoaderRoute: typeof Organiser_layoutRouteImport
+      parentRoute: typeof OrganiserRoute
     }
     '/landing/__layout': {
       id: '/landing/__layout'
@@ -194,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof App_layoutRouteImport
       parentRoute: typeof AppRoute
     }
+    '/organiser/__layout/': {
+      id: '/organiser/__layout/'
+      path: '/'
+      fullPath: '/organiser/'
+      preLoaderRoute: typeof Organiser_layoutIndexRouteImport
+      parentRoute: typeof Organiser_layoutRoute
+    }
     '/landing/__layout/': {
       id: '/landing/__layout/'
       path: '/'
@@ -208,11 +265,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof App_layoutIndexRouteImport
       parentRoute: typeof App_layoutRoute
     }
+    '/organiser/__layout/createEvents': {
+      id: '/organiser/__layout/createEvents'
+      path: '/createEvents'
+      fullPath: '/organiser/createEvents'
+      preLoaderRoute: typeof Organiser_layoutCreateEventsRouteImport
+      parentRoute: typeof Organiser_layoutRoute
+    }
     '/landing/__layout/index copy': {
       id: '/landing/__layout/index copy'
       path: '/index copy'
       fullPath: '/landing/index copy'
       preLoaderRoute: typeof Landing_layoutIndexcopyRouteImport
+      parentRoute: typeof Landing_layoutRoute
+    }
+    '/landing/__layout/about': {
+      id: '/landing/__layout/about'
+      path: '/about'
+      fullPath: '/landing/about'
+      preLoaderRoute: typeof Landing_layoutAboutRouteImport
       parentRoute: typeof Landing_layoutRoute
     }
   }
@@ -241,11 +312,13 @@ const AppRouteChildren: AppRouteChildren = {
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface Landing_layoutRouteChildren {
+  Landing_layoutAboutRoute: typeof Landing_layoutAboutRoute
   Landing_layoutIndexcopyRoute: typeof Landing_layoutIndexcopyRoute
   Landing_layoutIndexRoute: typeof Landing_layoutIndexRoute
 }
 
 const Landing_layoutRouteChildren: Landing_layoutRouteChildren = {
+  Landing_layoutAboutRoute: Landing_layoutAboutRoute,
   Landing_layoutIndexcopyRoute: Landing_layoutIndexcopyRoute,
   Landing_layoutIndexRoute: Landing_layoutIndexRoute,
 }
@@ -256,22 +329,46 @@ const Landing_layoutRouteWithChildren = Landing_layoutRoute._addFileChildren(
 
 interface LandingRouteChildren {
   Landing_layoutRoute: typeof Landing_layoutRouteWithChildren
-  LandingAboutRoute: typeof LandingAboutRoute
 }
 
 const LandingRouteChildren: LandingRouteChildren = {
   Landing_layoutRoute: Landing_layoutRouteWithChildren,
-  LandingAboutRoute: LandingAboutRoute,
 }
 
 const LandingRouteWithChildren =
   LandingRoute._addFileChildren(LandingRouteChildren)
+
+interface Organiser_layoutRouteChildren {
+  Organiser_layoutCreateEventsRoute: typeof Organiser_layoutCreateEventsRoute
+  Organiser_layoutIndexRoute: typeof Organiser_layoutIndexRoute
+}
+
+const Organiser_layoutRouteChildren: Organiser_layoutRouteChildren = {
+  Organiser_layoutCreateEventsRoute: Organiser_layoutCreateEventsRoute,
+  Organiser_layoutIndexRoute: Organiser_layoutIndexRoute,
+}
+
+const Organiser_layoutRouteWithChildren =
+  Organiser_layoutRoute._addFileChildren(Organiser_layoutRouteChildren)
+
+interface OrganiserRouteChildren {
+  Organiser_layoutRoute: typeof Organiser_layoutRouteWithChildren
+}
+
+const OrganiserRouteChildren: OrganiserRouteChildren = {
+  Organiser_layoutRoute: Organiser_layoutRouteWithChildren,
+}
+
+const OrganiserRouteWithChildren = OrganiserRoute._addFileChildren(
+  OrganiserRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   LandingRoute: LandingRouteWithChildren,
+  OrganiserRoute: OrganiserRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
