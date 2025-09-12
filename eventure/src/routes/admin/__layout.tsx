@@ -1,5 +1,5 @@
 import AdminSidebar from '@/components/admin/adminSideBar'
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/admin/__layout')({
   component: RouteComponent,
@@ -7,9 +7,12 @@ export const Route = createFileRoute('/admin/__layout')({
 
 function RouteComponent() {
   return (
-    <div>
+    <div className="flex h-screen">
+      {/* Sidebar */}
       <AdminSidebar />
-      <main>
+
+      {/* Main content */}
+      <main className="flex-1 p-4 overflow-auto bg-gray-50">
         <Outlet />
       </main>
     </div>

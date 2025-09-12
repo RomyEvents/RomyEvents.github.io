@@ -15,30 +15,21 @@ export default function AdminSidebar() {
       <div className="flex flex-col gap-2">
         <Button
           component={Link}
-          to="/landing"
+          to="/admin/accounts"
           variant="contained"
           color="secondary"
           className="bg-black text-white hover:bg-gray-800"
         >
-          Home
+          Accounts
         </Button>
         <Button
           component={Link}
-          to="/landing/about"
+          to="/admin/applications"
           variant="contained"
           color="secondary"
           className="bg-black text-white hover:bg-gray-800"
         >
-          About us
-        </Button>
-        <Button
-          component={Link}
-          to="/demo/tanstack-query"
-          variant="contained"
-          color="secondary"
-          className="bg-black text-white hover:bg-gray-800"
-        >
-          Pricing Plans
+          Applications
         </Button>
         <Button
           component={Link}
@@ -47,7 +38,25 @@ export default function AdminSidebar() {
           color="secondary"
           className="bg-black text-white hover:bg-gray-800"
         >
-          FAQ
+          Categories
+        </Button>
+        <Button
+          component={Link}
+          to="/demo/tanstack-query"
+          variant="contained"
+          color="secondary"
+          className="bg-black text-white hover:bg-gray-800"
+        >
+          Listing Reports
+        </Button>
+        <Button
+          component={Link}
+          to="/demo/tanstack-query"
+          variant="contained"
+          color="secondary"
+          className="bg-black text-white hover:bg-gray-800"
+        >
+          Landing Page
         </Button>
       </div>
 

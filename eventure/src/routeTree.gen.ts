@@ -24,6 +24,8 @@ import { Route as Admin_layoutIndexRouteImport } from './routes/admin/__layout.i
 import { Route as Organiser_layoutCreateEventsRouteImport } from './routes/organiser/__layout.createEvents'
 import { Route as Landing_layoutIndexcopyRouteImport } from './routes/landing/__layout.index copy'
 import { Route as Landing_layoutAboutRouteImport } from './routes/landing/__layout.about'
+import { Route as Admin_layoutApplicationsRouteImport } from './routes/admin/__layout.applications'
+import { Route as Admin_layoutAccountsRouteImport } from './routes/admin/__layout.accounts'
 
 const OrganiserRouteImport = createFileRoute('/organiser')()
 const LandingRouteImport = createFileRoute('/landing')()
@@ -112,6 +114,17 @@ const Landing_layoutAboutRoute = Landing_layoutAboutRouteImport.update({
   path: '/about',
   getParentRoute: () => Landing_layoutRoute,
 } as any)
+const Admin_layoutApplicationsRoute =
+  Admin_layoutApplicationsRouteImport.update({
+    id: '/applications',
+    path: '/applications',
+    getParentRoute: () => Admin_layoutRoute,
+  } as any)
+const Admin_layoutAccountsRoute = Admin_layoutAccountsRouteImport.update({
+  id: '/accounts',
+  path: '/accounts',
+  getParentRoute: () => Admin_layoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -120,6 +133,8 @@ export interface FileRoutesByFullPath {
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutRouteWithChildren
   '/organiser': typeof Organiser_layoutRouteWithChildren
+  '/admin/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/applications': typeof Admin_layoutApplicationsRoute
   '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
   '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
@@ -135,6 +150,8 @@ export interface FileRoutesByTo {
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutIndexRoute
   '/organiser': typeof Organiser_layoutIndexRoute
+  '/admin/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/applications': typeof Admin_layoutApplicationsRoute
   '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
   '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
@@ -151,6 +168,8 @@ export interface FileRoutesById {
   '/landing/__layout': typeof Landing_layoutRouteWithChildren
   '/organiser': typeof OrganiserRouteWithChildren
   '/organiser/__layout': typeof Organiser_layoutRouteWithChildren
+  '/admin/__layout/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/__layout/applications': typeof Admin_layoutApplicationsRoute
   '/landing/__layout/about': typeof Landing_layoutAboutRoute
   '/landing/__layout/index copy': typeof Landing_layoutIndexcopyRoute
   '/organiser/__layout/createEvents': typeof Organiser_layoutCreateEventsRoute
@@ -168,6 +187,8 @@ export interface FileRouteTypes {
     | '/demo/tanstack-query'
     | '/landing'
     | '/organiser'
+    | '/admin/accounts'
+    | '/admin/applications'
     | '/landing/about'
     | '/landing/index copy'
     | '/organiser/createEvents'
@@ -183,6 +204,8 @@ export interface FileRouteTypes {
     | '/demo/tanstack-query'
     | '/landing'
     | '/organiser'
+    | '/admin/accounts'
+    | '/admin/applications'
     | '/landing/about'
     | '/landing/index copy'
     | '/organiser/createEvents'
@@ -198,6 +221,8 @@ export interface FileRouteTypes {
     | '/landing/__layout'
     | '/organiser'
     | '/organiser/__layout'
+    | '/admin/__layout/accounts'
+    | '/admin/__layout/applications'
     | '/landing/__layout/about'
     | '/landing/__layout/index copy'
     | '/organiser/__layout/createEvents'
@@ -337,14 +362,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Landing_layoutAboutRouteImport
       parentRoute: typeof Landing_layoutRoute
     }
+    '/admin/__layout/applications': {
+      id: '/admin/__layout/applications'
+      path: '/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof Admin_layoutApplicationsRouteImport
+      parentRoute: typeof Admin_layoutRoute
+    }
+    '/admin/__layout/accounts': {
+      id: '/admin/__layout/accounts'
+      path: '/accounts'
+      fullPath: '/admin/accounts'
+      preLoaderRoute: typeof Admin_layoutAccountsRouteImport
+      parentRoute: typeof Admin_layoutRoute
+    }
   }
 }
 
 interface Admin_layoutRouteChildren {
+  Admin_layoutAccountsRoute: typeof Admin_layoutAccountsRoute
+  Admin_layoutApplicationsRoute: typeof Admin_layoutApplicationsRoute
   Admin_layoutIndexRoute: typeof Admin_layoutIndexRoute
 }
 
 const Admin_layoutRouteChildren: Admin_layoutRouteChildren = {
+  Admin_layoutAccountsRoute: Admin_layoutAccountsRoute,
+  Admin_layoutApplicationsRoute: Admin_layoutApplicationsRoute,
   Admin_layoutIndexRoute: Admin_layoutIndexRoute,
 }
 
