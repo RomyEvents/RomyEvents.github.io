@@ -61,8 +61,18 @@ function RouteComponent() {
       status: 'SUSPENDED',
     },
   ]
-
-  const UserCard = ({ user }) => {
+  type User = {
+    status: 'ACTIVE' | 'INACTIVE' | string
+    name: string
+    email: string
+    role: string
+    gender: string
+    age: number
+  }
+  interface UserCardProps {
+    user: User
+  }
+  const UserCard: React.FC<UserCardProps> = ({ user }) => {
     const isActive = user.status === 'ACTIVE'
     const statusColor = isActive ? 'bg-amber-600' : 'bg-gray-400'
 
