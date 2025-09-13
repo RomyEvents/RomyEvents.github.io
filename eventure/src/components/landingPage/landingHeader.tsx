@@ -1,11 +1,10 @@
 import { Link } from '@tanstack/react-router'
 import Button from '@mui/material/Button'
 import { showLoginDialog, LoginDialog } from '../login/loginDialog'
+
 export default function LandingHeader() {
-  //const navigate = useNavigate()
   const handleLogin = async () => {
     showLoginDialog()
-    // optional: analytics or checks
   }
 
   return (
@@ -36,6 +35,28 @@ export default function LandingHeader() {
           <LoginDialog />
         </div>
       </nav>
+
+      {/* Subtle admin/organiser links under header */}
+      <div className="flex justify-end gap-2 mt-1 px-2">
+        <Link to="/admin">
+          <Button
+            size="small"
+            variant="text"
+            sx={{ color: 'rgba(0,0,0,0.6)', textTransform: 'none' }}
+          >
+            Admin
+          </Button>
+        </Link>
+        <Link to="/organiser">
+          <Button
+            size="small"
+            variant="text"
+            sx={{ color: 'rgba(0,0,0,0.6)', textTransform: 'none' }}
+          >
+            Organiser
+          </Button>
+        </Link>
+      </div>
     </header>
   )
 }

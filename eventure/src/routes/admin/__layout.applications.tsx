@@ -10,8 +10,8 @@ function RouteComponent() {
   const dropdownRef = useRef(null)
 
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = () => {
+      if (dropdownRef.current) {
         setIsDropdownOpen(false)
       }
     }
