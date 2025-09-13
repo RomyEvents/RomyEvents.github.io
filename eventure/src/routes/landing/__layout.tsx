@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router'
-import LandingHeader from '@/components/landingHeader'
+import LandingHeader from '@/components/landingPage/landingHeader'
 export const Route = createFileRoute('/landing/__layout')({
   component: RouteComponent,
 })

@@ -12,15 +12,32 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as Organiser_layoutRouteImport } from './routes/organiser/__layout'
 import { Route as Landing_layoutRouteImport } from './routes/landing/__layout'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo.tanstack-query'
 import { Route as App_layoutRouteImport } from './routes/app/__layout'
+import { Route as Admin_layoutRouteImport } from './routes/admin/__layout'
+import { Route as Organiser_layoutIndexRouteImport } from './routes/organiser/__layout.index'
 import { Route as Landing_layoutIndexRouteImport } from './routes/landing/__layout.index'
 import { Route as App_layoutIndexRouteImport } from './routes/app/__layout.index'
+import { Route as Admin_layoutIndexRouteImport } from './routes/admin/__layout.index'
+import { Route as Organiser_layoutCreateEventsRouteImport } from './routes/organiser/__layout.createEvents'
+import { Route as Landing_layoutPricingRouteImport } from './routes/landing/__layout.pricing'
+import { Route as Landing_layoutIndexcopyRouteImport } from './routes/landing/__layout.index copy'
+import { Route as Landing_layoutAboutRouteImport } from './routes/landing/__layout.about'
+import { Route as Admin_layoutApplicationsRouteImport } from './routes/admin/__layout.applications'
+import { Route as Admin_layoutAccountsRouteImport } from './routes/admin/__layout.accounts'
 
+const OrganiserRouteImport = createFileRoute('/organiser')()
 const LandingRouteImport = createFileRoute('/landing')()
 const AppRouteImport = createFileRoute('/app')()
+const AdminRouteImport = createFileRoute('/admin')()
 
+const OrganiserRoute = OrganiserRouteImport.update({
+  id: '/organiser',
+  path: '/organiser',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LandingRoute = LandingRouteImport.update({
   id: '/landing',
   path: '/landing',
@@ -31,10 +48,19 @@ const AppRoute = AppRouteImport.update({
   path: '/app',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const Organiser_layoutRoute = Organiser_layoutRouteImport.update({
+  id: '/__layout',
+  getParentRoute: () => OrganiserRoute,
 } as any)
 const Landing_layoutRoute = Landing_layoutRouteImport.update({
   id: '/__layout',
@@ -49,6 +75,15 @@ const App_layoutRoute = App_layoutRouteImport.update({
   id: '/__layout',
   getParentRoute: () => AppRoute,
 } as any)
+const Admin_layoutRoute = Admin_layoutRouteImport.update({
+  id: '/__layout',
+  getParentRoute: () => AdminRoute,
+} as any)
+const Organiser_layoutIndexRoute = Organiser_layoutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Organiser_layoutRoute,
+} as any)
 const Landing_layoutIndexRoute = Landing_layoutIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -59,64 +94,174 @@ const App_layoutIndexRoute = App_layoutIndexRouteImport.update({
   path: '/',
   getParentRoute: () => App_layoutRoute,
 } as any)
+const Admin_layoutIndexRoute = Admin_layoutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => Admin_layoutRoute,
+} as any)
+const Organiser_layoutCreateEventsRoute =
+  Organiser_layoutCreateEventsRouteImport.update({
+    id: '/createEvents',
+    path: '/createEvents',
+    getParentRoute: () => Organiser_layoutRoute,
+  } as any)
+const Landing_layoutPricingRoute = Landing_layoutPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => Landing_layoutRoute,
+} as any)
+const Landing_layoutIndexcopyRoute = Landing_layoutIndexcopyRouteImport.update({
+  id: '/index copy',
+  path: '/index copy',
+  getParentRoute: () => Landing_layoutRoute,
+} as any)
+const Landing_layoutAboutRoute = Landing_layoutAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => Landing_layoutRoute,
+} as any)
+const Admin_layoutApplicationsRoute =
+  Admin_layoutApplicationsRouteImport.update({
+    id: '/applications',
+    path: '/applications',
+    getParentRoute: () => Admin_layoutRoute,
+  } as any)
+const Admin_layoutAccountsRoute = Admin_layoutAccountsRouteImport.update({
+  id: '/accounts',
+  path: '/accounts',
+  getParentRoute: () => Admin_layoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof Admin_layoutRouteWithChildren
   '/app': typeof App_layoutRouteWithChildren
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutRouteWithChildren
+  '/organiser': typeof Organiser_layoutRouteWithChildren
+  '/admin/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/applications': typeof Admin_layoutApplicationsRoute
+  '/landing/about': typeof Landing_layoutAboutRoute
+  '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/pricing': typeof Landing_layoutPricingRoute
+  '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
+  '/admin/': typeof Admin_layoutIndexRoute
   '/app/': typeof App_layoutIndexRoute
   '/landing/': typeof Landing_layoutIndexRoute
+  '/organiser/': typeof Organiser_layoutIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof Admin_layoutIndexRoute
   '/app': typeof App_layoutIndexRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof Landing_layoutIndexRoute
+  '/organiser': typeof Organiser_layoutIndexRoute
+  '/admin/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/applications': typeof Admin_layoutApplicationsRoute
+  '/landing/about': typeof Landing_layoutAboutRoute
+  '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/pricing': typeof Landing_layoutPricingRoute
+  '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/admin/__layout': typeof Admin_layoutRouteWithChildren
   '/app': typeof AppRouteWithChildren
   '/app/__layout': typeof App_layoutRouteWithChildren
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
   '/landing': typeof LandingRouteWithChildren
   '/landing/__layout': typeof Landing_layoutRouteWithChildren
+  '/organiser': typeof OrganiserRouteWithChildren
+  '/organiser/__layout': typeof Organiser_layoutRouteWithChildren
+  '/admin/__layout/accounts': typeof Admin_layoutAccountsRoute
+  '/admin/__layout/applications': typeof Admin_layoutApplicationsRoute
+  '/landing/__layout/about': typeof Landing_layoutAboutRoute
+  '/landing/__layout/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/__layout/pricing': typeof Landing_layoutPricingRoute
+  '/organiser/__layout/createEvents': typeof Organiser_layoutCreateEventsRoute
+  '/admin/__layout/': typeof Admin_layoutIndexRoute
   '/app/__layout/': typeof App_layoutIndexRoute
   '/landing/__layout/': typeof Landing_layoutIndexRoute
+  '/organiser/__layout/': typeof Organiser_layoutIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/app'
     | '/demo/tanstack-query'
     | '/landing'
+    | '/organiser'
+    | '/admin/accounts'
+    | '/admin/applications'
+    | '/landing/about'
+    | '/landing/index copy'
+    | '/landing/pricing'
+    | '/organiser/createEvents'
+    | '/admin/'
     | '/app/'
     | '/landing/'
+    | '/organiser/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/demo/tanstack-query' | '/landing'
+  to:
+    | '/'
+    | '/admin'
+    | '/app'
+    | '/demo/tanstack-query'
+    | '/landing'
+    | '/organiser'
+    | '/admin/accounts'
+    | '/admin/applications'
+    | '/landing/about'
+    | '/landing/index copy'
+    | '/landing/pricing'
+    | '/organiser/createEvents'
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/admin/__layout'
     | '/app'
     | '/app/__layout'
     | '/demo/tanstack-query'
     | '/landing'
     | '/landing/__layout'
+    | '/organiser'
+    | '/organiser/__layout'
+    | '/admin/__layout/accounts'
+    | '/admin/__layout/applications'
+    | '/landing/__layout/about'
+    | '/landing/__layout/index copy'
+    | '/landing/__layout/pricing'
+    | '/organiser/__layout/createEvents'
+    | '/admin/__layout/'
     | '/app/__layout/'
     | '/landing/__layout/'
+    | '/organiser/__layout/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AppRoute: typeof AppRouteWithChildren
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   LandingRoute: typeof LandingRouteWithChildren
+  OrganiserRoute: typeof OrganiserRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/organiser': {
+      id: '/organiser'
+      path: '/organiser'
+      fullPath: '/organiser'
+      preLoaderRoute: typeof OrganiserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/landing': {
       id: '/landing'
       path: '/landing'
@@ -131,12 +276,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/organiser/__layout': {
+      id: '/organiser/__layout'
+      path: '/organiser'
+      fullPath: '/organiser'
+      preLoaderRoute: typeof Organiser_layoutRouteImport
+      parentRoute: typeof OrganiserRoute
     }
     '/landing/__layout': {
       id: '/landing/__layout'
@@ -159,6 +318,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof App_layoutRouteImport
       parentRoute: typeof AppRoute
     }
+    '/admin/__layout': {
+      id: '/admin/__layout'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof Admin_layoutRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/organiser/__layout/': {
+      id: '/organiser/__layout/'
+      path: '/'
+      fullPath: '/organiser/'
+      preLoaderRoute: typeof Organiser_layoutIndexRouteImport
+      parentRoute: typeof Organiser_layoutRoute
+    }
     '/landing/__layout/': {
       id: '/landing/__layout/'
       path: '/'
@@ -173,8 +346,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof App_layoutIndexRouteImport
       parentRoute: typeof App_layoutRoute
     }
+    '/admin/__layout/': {
+      id: '/admin/__layout/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof Admin_layoutIndexRouteImport
+      parentRoute: typeof Admin_layoutRoute
+    }
+    '/organiser/__layout/createEvents': {
+      id: '/organiser/__layout/createEvents'
+      path: '/createEvents'
+      fullPath: '/organiser/createEvents'
+      preLoaderRoute: typeof Organiser_layoutCreateEventsRouteImport
+      parentRoute: typeof Organiser_layoutRoute
+    }
+    '/landing/__layout/pricing': {
+      id: '/landing/__layout/pricing'
+      path: '/pricing'
+      fullPath: '/landing/pricing'
+      preLoaderRoute: typeof Landing_layoutPricingRouteImport
+      parentRoute: typeof Landing_layoutRoute
+    }
+    '/landing/__layout/index copy': {
+      id: '/landing/__layout/index copy'
+      path: '/index copy'
+      fullPath: '/landing/index copy'
+      preLoaderRoute: typeof Landing_layoutIndexcopyRouteImport
+      parentRoute: typeof Landing_layoutRoute
+    }
+    '/landing/__layout/about': {
+      id: '/landing/__layout/about'
+      path: '/about'
+      fullPath: '/landing/about'
+      preLoaderRoute: typeof Landing_layoutAboutRouteImport
+      parentRoute: typeof Landing_layoutRoute
+    }
+    '/admin/__layout/applications': {
+      id: '/admin/__layout/applications'
+      path: '/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof Admin_layoutApplicationsRouteImport
+      parentRoute: typeof Admin_layoutRoute
+    }
+    '/admin/__layout/accounts': {
+      id: '/admin/__layout/accounts'
+      path: '/accounts'
+      fullPath: '/admin/accounts'
+      preLoaderRoute: typeof Admin_layoutAccountsRouteImport
+      parentRoute: typeof Admin_layoutRoute
+    }
   }
 }
+
+interface Admin_layoutRouteChildren {
+  Admin_layoutAccountsRoute: typeof Admin_layoutAccountsRoute
+  Admin_layoutApplicationsRoute: typeof Admin_layoutApplicationsRoute
+  Admin_layoutIndexRoute: typeof Admin_layoutIndexRoute
+}
+
+const Admin_layoutRouteChildren: Admin_layoutRouteChildren = {
+  Admin_layoutAccountsRoute: Admin_layoutAccountsRoute,
+  Admin_layoutApplicationsRoute: Admin_layoutApplicationsRoute,
+  Admin_layoutIndexRoute: Admin_layoutIndexRoute,
+}
+
+const Admin_layoutRouteWithChildren = Admin_layoutRoute._addFileChildren(
+  Admin_layoutRouteChildren,
+)
+
+interface AdminRouteChildren {
+  Admin_layoutRoute: typeof Admin_layoutRouteWithChildren
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  Admin_layoutRoute: Admin_layoutRouteWithChildren,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface App_layoutRouteChildren {
   App_layoutIndexRoute: typeof App_layoutIndexRoute
@@ -199,10 +447,16 @@ const AppRouteChildren: AppRouteChildren = {
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 interface Landing_layoutRouteChildren {
+  Landing_layoutAboutRoute: typeof Landing_layoutAboutRoute
+  Landing_layoutIndexcopyRoute: typeof Landing_layoutIndexcopyRoute
+  Landing_layoutPricingRoute: typeof Landing_layoutPricingRoute
   Landing_layoutIndexRoute: typeof Landing_layoutIndexRoute
 }
 
 const Landing_layoutRouteChildren: Landing_layoutRouteChildren = {
+  Landing_layoutAboutRoute: Landing_layoutAboutRoute,
+  Landing_layoutIndexcopyRoute: Landing_layoutIndexcopyRoute,
+  Landing_layoutPricingRoute: Landing_layoutPricingRoute,
   Landing_layoutIndexRoute: Landing_layoutIndexRoute,
 }
 
@@ -221,11 +475,38 @@ const LandingRouteChildren: LandingRouteChildren = {
 const LandingRouteWithChildren =
   LandingRoute._addFileChildren(LandingRouteChildren)
 
+interface Organiser_layoutRouteChildren {
+  Organiser_layoutCreateEventsRoute: typeof Organiser_layoutCreateEventsRoute
+  Organiser_layoutIndexRoute: typeof Organiser_layoutIndexRoute
+}
+
+const Organiser_layoutRouteChildren: Organiser_layoutRouteChildren = {
+  Organiser_layoutCreateEventsRoute: Organiser_layoutCreateEventsRoute,
+  Organiser_layoutIndexRoute: Organiser_layoutIndexRoute,
+}
+
+const Organiser_layoutRouteWithChildren =
+  Organiser_layoutRoute._addFileChildren(Organiser_layoutRouteChildren)
+
+interface OrganiserRouteChildren {
+  Organiser_layoutRoute: typeof Organiser_layoutRouteWithChildren
+}
+
+const OrganiserRouteChildren: OrganiserRouteChildren = {
+  Organiser_layoutRoute: Organiser_layoutRouteWithChildren,
+}
+
+const OrganiserRouteWithChildren = OrganiserRoute._addFileChildren(
+  OrganiserRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AppRoute: AppRouteWithChildren,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   LandingRoute: LandingRouteWithChildren,
+  OrganiserRoute: OrganiserRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import Button from '@mui/material/Button'
-import { showLoginDialog, LoginDialog } from './login/loginDialog'
+import { showLoginDialog, LoginDialog } from '../login/loginDialog'
 export default function LandingHeader() {
   //const navigate = useNavigate()
   const handleLogin = async () => {
@@ -21,15 +21,18 @@ export default function LandingHeader() {
         {/* Right: Links + Button */}
         <div className="flex items-center gap-4">
           <div className="font-bold">
-            <Link to="/">Home</Link>
+            <Link to="/landing">Home</Link>
           </div>
           <div className="font-bold">
-            <Link to="/demo/tanstack-query">About us</Link>
+            <Link to="/landing/about">About us</Link>
           </div>
           <div className="font-bold">
-            <Link to="/demo/tanstack-query">Contact</Link>
+            <Link to="/landing/pricing">Pricing Plans</Link>
           </div>
-          <Button onClick={handleLogin}>Login</Button>
+          <div className="font-bold">
+            <Link to="/demo/tanstack-query">FAQ</Link>
+          </div>
+          <Button onClick={handleLogin}>Signup</Button>
           <LoginDialog />
         </div>
       </nav>
