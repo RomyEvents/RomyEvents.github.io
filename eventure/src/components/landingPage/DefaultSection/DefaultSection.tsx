@@ -21,23 +21,20 @@ const DefaultSection: React.FC<DefaultSectionProps> = ({
   return (
     <div
       className={`py-12 px-4 bg-center bg-no-repeat flex flex-col items-center ${
-        backgroundImage
-          ? 'bg-cover'
-          : backgroundColor
-            ? `bg-[${backgroundColor}]`
-            : 'bg-[#a67c52]'
+        backgroundImage ? 'bg-cover' : ''
       }`}
       style={{
         backgroundImage: backgroundImage
           ? `url(${backgroundImage})`
           : undefined,
+        backgroundColor: backgroundColor || undefined,
         height: height ? `${height}px` : 'auto',
       }}
     >
       {/* Centered icon */}
       {icon && (
         <div className="mb-4">
-          <Icon sx={{ fontSize: 48 }}>{icon}</Icon>
+          <Icon sx={{ fontSize: 48, color: 'white' }}>{icon}</Icon>
         </div>
       )}
 

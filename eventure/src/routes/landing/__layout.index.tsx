@@ -17,13 +17,46 @@ function App() {
       height: 300,
     },
     {
-      type: 'default',
-      header: 'Our user base',
-      icon: 'accessibilityNew',
-      description: '12,000 users \n 400 organizers hosting events',
-      backgroundImage: null,
+      type: 'trending',
+      header: 'Upcoming Events',
       backgroundColor: '#a67c52',
+      events: [
+        {
+          id: '1',
+          title: 'Music Festival',
+          date: '2025-09-20',
+          location: 'Singapore',
+          icon: 'music_note',
+          image:
+            'https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg', // concert
+        },
+        {
+          id: '2',
+          title: 'Tech Conference',
+          date: '2025-10-02',
+          location: 'San Francisco',
+          icon: 'laptop',
+          image:
+            'https://images.pexels.com/photos/1181403/pexels-photo-1181403.jpeg', // tech event
+        },
+        {
+          id: '3',
+          title: 'Art Exhibition',
+          date: '2025-11-12',
+          location: 'Paris',
+          icon: 'brush',
+          image:
+            'https://images.pexels.com/photos/370799/pexels-photo-370799.jpeg', // art gallery
+        },
+      ],
+    },
+
+    {
+      type: 'userBase',
+      backgroundColor: '#b29775',
       height: 300,
+      totalUsers: 12000,
+      totalOrganizers: 400,
     },
     {
       type: 'review',

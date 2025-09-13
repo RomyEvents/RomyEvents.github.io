@@ -22,6 +22,7 @@ import { Route as Landing_layoutIndexRouteImport } from './routes/landing/__layo
 import { Route as App_layoutIndexRouteImport } from './routes/app/__layout.index'
 import { Route as Admin_layoutIndexRouteImport } from './routes/admin/__layout.index'
 import { Route as Organiser_layoutCreateEventsRouteImport } from './routes/organiser/__layout.createEvents'
+import { Route as Landing_layoutPricingRouteImport } from './routes/landing/__layout.pricing'
 import { Route as Landing_layoutIndexcopyRouteImport } from './routes/landing/__layout.index copy'
 import { Route as Landing_layoutAboutRouteImport } from './routes/landing/__layout.about'
 import { Route as Admin_layoutApplicationsRouteImport } from './routes/admin/__layout.applications'
@@ -104,6 +105,11 @@ const Organiser_layoutCreateEventsRoute =
     path: '/createEvents',
     getParentRoute: () => Organiser_layoutRoute,
   } as any)
+const Landing_layoutPricingRoute = Landing_layoutPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => Landing_layoutRoute,
+} as any)
 const Landing_layoutIndexcopyRoute = Landing_layoutIndexcopyRouteImport.update({
   id: '/index copy',
   path: '/index copy',
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/admin/applications': typeof Admin_layoutApplicationsRoute
   '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/pricing': typeof Landing_layoutPricingRoute
   '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
   '/admin/': typeof Admin_layoutIndexRoute
   '/app/': typeof App_layoutIndexRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/admin/applications': typeof Admin_layoutApplicationsRoute
   '/landing/about': typeof Landing_layoutAboutRoute
   '/landing/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/pricing': typeof Landing_layoutPricingRoute
   '/organiser/createEvents': typeof Organiser_layoutCreateEventsRoute
 }
 export interface FileRoutesById {
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/admin/__layout/applications': typeof Admin_layoutApplicationsRoute
   '/landing/__layout/about': typeof Landing_layoutAboutRoute
   '/landing/__layout/index copy': typeof Landing_layoutIndexcopyRoute
+  '/landing/__layout/pricing': typeof Landing_layoutPricingRoute
   '/organiser/__layout/createEvents': typeof Organiser_layoutCreateEventsRoute
   '/admin/__layout/': typeof Admin_layoutIndexRoute
   '/app/__layout/': typeof App_layoutIndexRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/admin/applications'
     | '/landing/about'
     | '/landing/index copy'
+    | '/landing/pricing'
     | '/organiser/createEvents'
     | '/admin/'
     | '/app/'
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/admin/applications'
     | '/landing/about'
     | '/landing/index copy'
+    | '/landing/pricing'
     | '/organiser/createEvents'
   id:
     | '__root__'
@@ -225,6 +236,7 @@ export interface FileRouteTypes {
     | '/admin/__layout/applications'
     | '/landing/__layout/about'
     | '/landing/__layout/index copy'
+    | '/landing/__layout/pricing'
     | '/organiser/__layout/createEvents'
     | '/admin/__layout/'
     | '/app/__layout/'
@@ -348,6 +360,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Organiser_layoutCreateEventsRouteImport
       parentRoute: typeof Organiser_layoutRoute
     }
+    '/landing/__layout/pricing': {
+      id: '/landing/__layout/pricing'
+      path: '/pricing'
+      fullPath: '/landing/pricing'
+      preLoaderRoute: typeof Landing_layoutPricingRouteImport
+      parentRoute: typeof Landing_layoutRoute
+    }
     '/landing/__layout/index copy': {
       id: '/landing/__layout/index copy'
       path: '/index copy'
@@ -430,12 +449,14 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 interface Landing_layoutRouteChildren {
   Landing_layoutAboutRoute: typeof Landing_layoutAboutRoute
   Landing_layoutIndexcopyRoute: typeof Landing_layoutIndexcopyRoute
+  Landing_layoutPricingRoute: typeof Landing_layoutPricingRoute
   Landing_layoutIndexRoute: typeof Landing_layoutIndexRoute
 }
 
 const Landing_layoutRouteChildren: Landing_layoutRouteChildren = {
   Landing_layoutAboutRoute: Landing_layoutAboutRoute,
   Landing_layoutIndexcopyRoute: Landing_layoutIndexcopyRoute,
+  Landing_layoutPricingRoute: Landing_layoutPricingRoute,
   Landing_layoutIndexRoute: Landing_layoutIndexRoute,
 }
 

@@ -27,12 +27,12 @@ export default function LandingHeader() {
             <Link to="/landing/about">About us</Link>
           </div>
           <div className="font-bold">
-            <Link to="/demo/tanstack-query">Pricing Plans</Link>
+            <Link to="/landing/pricing">Pricing Plans</Link>
           </div>
           <div className="font-bold">
             <Link to="/demo/tanstack-query">FAQ</Link>
           </div>
-          <Button onClick={handleLogin}>Login</Button>
+          <Button onClick={handleLogin}>Signup</Button>
           <LoginDialog />
         </div>
       </nav>

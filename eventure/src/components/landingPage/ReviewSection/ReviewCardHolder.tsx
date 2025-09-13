@@ -10,17 +10,25 @@ interface Review {
 interface ReviewCardHolderProps {
   reviews: Review[]
   header: string
+  backgroundColor?: string | null
 }
 
 const ReviewCardHolder: React.FC<ReviewCardHolderProps> = ({
   reviews,
   header,
+  backgroundColor,
 }) => {
   return (
-    <div className="bg-[#a67c52] py-12 px-4">
+    <div
+      className="py-12 px-4"
+      style={{
+        backgroundColor: backgroundColor || '#a67c52', // default if not provided
+      }}
+    >
       <h2 className="text-center text-white text-2xl font-semibold mb-8">
         {header}
       </h2>
+
       <div className="flex gap-6 overflow-x-auto scrollbar-thin scrollbar-thumb-[#5a3e2b] scrollbar-track-[#d6bfa0] px-2">
         {reviews.map((review, index) => (
           <div

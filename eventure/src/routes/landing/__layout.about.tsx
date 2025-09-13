@@ -7,18 +7,51 @@ export const Route = createFileRoute('/landing/__layout/about')({
 
 function AboutComponent() {
   const pageData = [
+    // Hero / Intro
     {
       type: 'default',
-      header: 'Connecting Communities, One Event at a Time',
-      icon: null,
-      description: `We believe events are more than just gatherings-they are opportunities to connect, share, and build lasting experiences. Our platform was created to make discovering and hosting local events effortless.\n
-Our platform makes it easy for anyone to join-completely free!! Explore trending events, bookmark your favorites, and never miss what's happening around you.\n
-Our mission is to connect people through meaningful events and empower organizers to grow their communities.`,
+      header: 'About Us',
+      icon: 'info',
+      description: `We are passionate about connecting people and empowering communities through events. Our mission is to make it easy for everyone to discover, join, and organize meaningful gatherings that bring people together.`,
+      backgroundImage: null,
+      backgroundColor: '#b29775',
+      height: 350,
+    },
+
+    // Mission / Vision
+    {
+      type: 'default',
+      header: 'Our Mission',
+      icon: 'emojiObjects',
+      description: `To provide a platform that fosters connections, encourages participation, and supports event organizers in building thriving communities.`,
       backgroundImage: null,
       backgroundColor: '#a67c52',
       height: null,
     },
+
+    // Team Section
+    {
+      type: 'default',
+      header: 'Meet the Team',
+      icon: 'people',
+      description: `Our team is made up of passionate individuals from diverse backgrounds, all committed to making events accessible, fun, and meaningful for everyone.`,
+      backgroundImage: null,
+      backgroundColor: '#b29775',
+      height: null,
+    },
+
+    // Call to Action (optional)
+    {
+      type: 'default',
+      header: 'Join Our Community',
+      icon: 'rocket_launch',
+      description: `Whether you’re looking to attend events or host your own, we invite you to be part of our growing community.`,
+      backgroundImage: null,
+      backgroundColor: '#a67c52',
+      height: 300,
+    },
   ]
+
   return (
     <div className="w-full mx-auto">
       {pageData.map((section, index) => {
