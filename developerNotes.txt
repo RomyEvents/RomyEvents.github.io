@@ -1,0 +1,20 @@
+Ron--
+To ensure that the cleint side  routing works when deployed, make sure to set base: '/' in vite.config.ts
+e.g
+export default defineConfig({
+  base: '/',//over here 
+  plugins: [
+    TanStackRouterVite({ autoCodeSplitting: false }),
+    viteReact(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
+})
+-------------------------------------------------
+
+To get supabase session token ('onAuthChanged'), you have to make sure the redirectTo option in signinwithoauth function is redirected 
+to the page that contains the useeffect hook with the onAuthChanged function
