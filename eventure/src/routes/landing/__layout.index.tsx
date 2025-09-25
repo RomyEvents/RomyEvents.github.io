@@ -1,11 +1,34 @@
 import { createFileRoute } from '@tanstack/react-router'
 import sectionRegistry from '@/sectionRegistry'
-
+import { useEffect } from 'react'
+import { supabase } from '@/supabaseClient'
+import api from '@/axios'
 export const Route = createFileRoute('/landing/__layout/')({
   component: App,
 })
 
 function App() {
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      // console.log(session)
+      // Object.keys(localStorage).forEach((key) => {
+      //   if (key.startsWith('sb-')) {
+      //     console.log(key, localStorage.getItem(key))
+      //   }
+      // })
+      api.get('/functions/v1/hello-world').then((res) => {
+        console.log(res)
+      })
+    })
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      console.log(session)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [])
   const pageData = [
     {
       type: 'default',
