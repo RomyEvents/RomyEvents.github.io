@@ -18,3 +18,6 @@ export default defineConfig({
 
 To get supabase session token ('onAuthChanged'), you have to make sure the redirectTo option in signinwithoauth function is redirected 
 to the page that contains the useeffect hook with the onAuthChanged function
+
+------
+makesure autocodesplitting is set to false in vite config to prevent failed to fetch dynamically imported module error
