@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0%" stop-color="#7ac5d8"/>
+      <stop offset="100%" stop-color="#5bb2d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#g2)"/>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="600" y="260" font-size="42" font-weight="700">Sell tickets securely</text>
+    <text x="600" y="320" font-size="20" opacity="0.9">Multiple payment options, guest checkout and instant e-tickets for attendees.</text>
+  </g>
+</svg>

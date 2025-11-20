@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0%" stop-color="#b78fd2"/>
+      <stop offset="100%" stop-color="#8f6ad6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="600" fill="url(#g3)"/>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">
+    <text x="600" y="260" font-size="42" font-weight="700">We handle refunds</text>
+    <text x="600" y="320" font-size="20" opacity="0.9">When issues arise our team helps process refunds and mediates disputes quickly and fairly.</text>
+  </g>
+</svg>
